@@ -1,0 +1,30 @@
+<section class="section-book" [@routerTransition]>
+  <div class="bg-video">
+      <video class='bg-video-content' autoplay muted loop >
+          <source src='../../../../assets/video/Not-Eiffel.mp4' type='video/mp4' >
+          <source src='../../../../assets/video/Not-Eiffel.webm' type='video/webm' >
+          <source src='../../../../assets/video/Not-Eiffel.webm' type='video/ogv' >
+      </video>
+  </div>
+  <div class="row">
+      <div class="book">
+        <h1>Reset Password</h1>
+        <div class="book__form">
+          <form class="form-container" [formGroup]='form' novalidate (ngSubmit)='onSubmit()'>
+              <mat-form-field>
+              <input matInput type="password" placeholder="password" formControlName='password'>
+              <mat-error *ngIf="!form.controls.password.valid">
+                <span *ngIf="form.controls.password.errors['required'] && form.controls.password.touched">
+                  this field is required 
+                </span>
+                </mat-error>
+            </mat-form-field>
+                <div class="buttons">
+                    <button mat-button [disabled]='!form.valid' class='color'>Reset</button>
+                    <button type='button' routerLink="/register" mat-button>Cancel</button>
+                  </div>
+            </form>
+        </div>
+      </div>
+  </div>
+</section>

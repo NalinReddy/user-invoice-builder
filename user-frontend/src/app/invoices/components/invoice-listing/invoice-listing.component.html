@@ -1,0 +1,52 @@
+  <mat-toolbar class='header'>
+    <h3>Invoice</h3>
+    <div class="menu-bar">
+      <button mat-button (click)='addInvoice()'>Add Invoice</button>
+    </div>
+  </mat-toolbar>
+  <div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- firstname Column -->
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef>  Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- lastName Column -->
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef>Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <!-- dob Column -->
+    <ng-container matColumnDef="date of birth">
+      <mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dob | date}} </mat-cell>
+    </ng-container>
+
+    <!-- menu button Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button type="button" mat-menu-item (click)="editInvoice(element)" >
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button type="button" mat-menu-item (click)="deleteInvoice(element._id)" >
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>   
+      </mat-cell>
+    </ng-container>
+    
+      
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  </div>

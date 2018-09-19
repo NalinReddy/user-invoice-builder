@@ -1,0 +1,55 @@
+<section class="section-book" [@routerTransition]>
+    <div class="bg-video">
+        <video class='bg-video-content' autoplay muted loop >
+            <source src='../../../../assets/video/Not-Eiffel.mp4' type='video/mp4' >
+            <source src='../../../../assets/video/Not-Eiffel.webm' type='video/webm' >
+            <source src='../../../../assets/video/Not-Eiffel.webm' type='video/ogv' >
+        </video>
+    </div>
+    <div class="row">
+        <div class="book">
+            <div class="book__form">
+                <h1>Register</h1>
+                <form class="form-container" [formGroup]='form' novalidate (ngSubmit)='onSubmit()'>
+                    <mat-form-field>
+                      <input matInput placeholder="Name" formControlName='name'>
+                      <mat-error *ngIf="!form.controls.name.valid && form.controls.name.touched">
+                         this field is required 
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput type="email" placeholder="Email" formControlName='email'>
+                      <mat-error *ngIf="!form.controls.email.valid && form.controls.email.touched">
+                        <span *ngIf="form.controls.email.errors['required']">
+                          this field is required 
+                        </span>
+                        <span *ngIf="form.controls.email.errors['email']">
+                            please enter a valid email address
+                        </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="dob" placeholder="date of birth" formControlName='dob'>
+                      <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                      <mat-datepicker #dob></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                    <input matInput type="password" placeholder="password" formControlName='password'>
+                    <mat-error *ngIf="!form.controls.password.valid && form.controls.password.touched">
+                      <span *ngIf="form.controls.password.errors['required']">
+                        this field is required 
+                      </span>
+                      <span *ngIf="!form.controls.password.errors['required']&&form.controls.password.errors['invalidLength']">
+                          password should be atleast 6 characters long
+                        </span>
+                      </mat-error>
+                  </mat-form-field>
+                    <div class="buttons">
+                      <button mat-button [disabled]='!form.valid' class='color'>Register</button>
+                      <button type='button' routerLink="/signin" mat-button>Cancel</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+  </section>

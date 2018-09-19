@@ -1,0 +1,16 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    .buttons{
+        display:flex;
+        .color{
+            color:white;
+            background-color: #ff4081;
+        }
+    }
+  }
+  
+  .form-container > * {
+    width: 100%;
+  }
+  

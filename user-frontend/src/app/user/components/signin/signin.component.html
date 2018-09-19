@@ -1,0 +1,46 @@
+<section class="section-book" [@routerTransition]>
+  <div class="bg-video">
+      <video class='bg-video-content' autoplay muted loop >
+          <source src='../../../../assets/video/Not-Eiffel.mp4' type='video/mp4' >
+          <source src='../../../../assets/video/Not-Eiffel.webm' type='video/webm' >
+          <source src='../../../../assets/video/Not-Eiffel.webm' type='video/ogv' >
+      </video>
+  </div>
+  <div class="row">
+      <div class="book">
+          <div class="book__form">
+            <form class="form-container" [formGroup]='form' novalidate (ngSubmit)='onSubmit()'>
+              <mat-form-field>
+                <input matInput type="email" placeholder="Email" formControlName='email'>
+                <mat-error *ngIf="!form.controls.email.valid">
+                  <span *ngIf="form.controls.email.errors['required'] && form.controls.password.touched">
+                    this field is required 
+                  </span>
+                  <span *ngIf="form.controls.email.errors['email']">
+                      please enter a valid email address
+                  </span>
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+              <input matInput type="password" placeholder="password" formControlName='password'>
+              <mat-error *ngIf="!form.controls.password.valid">
+                <span *ngIf="form.controls.password.errors['required'] && form.controls.password.touched">
+                  this field is required 
+                </span>
+                </mat-error>
+            </mat-form-field>
+            <div class="space-between">
+                <div class="buttons">
+                    <button mat-button [disabled]='!form.valid' class='color'>Login</button>
+                    <button type='button' (click)='clearForm()' mat-button>Cancel</button>
+                  </div>
+                  <div class="info">
+                    <span>no account?</span> <button class='color' type='button' mat-button routerLink='/register'>Register</button>
+                  </div>
+            </div>
+            <a routerLink='/forgotpassword' style="margin-top:2rem;">forgot password</a>
+            </form>
+          </div>
+      </div>
+  </div>
+</section>

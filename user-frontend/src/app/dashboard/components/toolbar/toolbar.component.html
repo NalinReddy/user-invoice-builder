@@ -1,0 +1,21 @@
+<mat-toolbar class="toolbar" color="accent">
+    <mat-toolbar-row>
+      <button mat-button class='sidenav-toggle'
+      (click)='toggleSidenav.emit()'>
+        <mat-icon>
+          menu
+        </mat-icon>
+      </button>
+      <span class='title'>Invoice Builder</span>
+      <!-- <button mat-button type='button' class="pull-right" (click)="logout()">Logout</button> -->
+      <div class="dropdown pull-right" placement="left" ngbDropdown>
+        <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{userName}}
+        </button>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" (click)="logout()">logout</a>
+          <a class="dropdown-item" ></a>
+          <a class="dropdown-item" ></a>
+        </div>
+      </div>
+</mat-toolbar-row>

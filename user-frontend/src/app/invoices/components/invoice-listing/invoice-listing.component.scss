@@ -1,0 +1,30 @@
+.menu-bar {
+    position: absolute;
+    right:60px;
+    color:white;
+    background-color: #ff4081;
+}
+
+@media only screen and (max-width: 500px){
+    .header{
+       h3{
+           font-size: 1rem;
+       }
+       .menu-bar{
+
+           button{
+               font-size: 10px;
+               min-width: 50px;
+           }
+       }
+    }
+    .mat-cell{
+        font-size:9px;
+    }
+    .mat-header-row{
+        padding: 0 12px;
+    }
+    .mat-header-row{
+        font-size: 10px;
+    }
+}
